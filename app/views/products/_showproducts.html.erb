@@ -1,8 +1,26 @@
-<% @products.each do |product| %>
-    <h2><%= product.name %></h2>
-    <p><%= product.description %></p>
-    <p><b>Price:</b><%= product.price %></p>
-<hr>
-    <%= link_to 'View Product', product_path(product)  %>
-    <%= link_to 'Delete Product', product, method: :delete %>
+<% if @products.any? %>
+  <div class="row">
+    <% @products.each do |product| %>
+    <div class="col-md-4">
+      <div class="card">
+         <% if product.image.attached? %>
+            <img src="<%= url_for(product.image) %>" alt="product_img" height="270px">
+         <% end %>
+        <div class="card-body">  
+            <h2><%= product.name %></h2>
+            <p><%= product.description %></p>
+            <p><b>Price:</b><%= product.price %></p>
+            <hr>
+        </div>
+        <div class="card-footer">
+          <div class="text-right">
+            <%= link_to 'View Product', product_path(product), class: "mr-2" %>
+          </div>
+        </div>
+        </div>
+    </div>
+  <% end %>
+  </div>
+<% else %>
+  <h3>No Products Found</h3>
 <% end %>
