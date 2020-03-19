@@ -1,0 +1,10 @@
+<h2><%= @product.name %></h2>
+    <p><%= @product.description %></p>
+    <p><b>Price:</b><%= @product.price %></p>
+    <b>Category:</b>
+    <ul>
+    <% @product.categories.each do |category| %>
+    <li><%= category.name %></li>
+    <%end%>
+    </ul>
+    <%= link_to 'Delete product', product_path(@product), method: :delete %>
