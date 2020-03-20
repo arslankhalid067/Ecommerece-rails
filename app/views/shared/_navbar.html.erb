@@ -17,7 +17,7 @@
           <%= link_to "Sign Out", destroy_user_session_path,method: :delete, class: "dropdown-item" %>
         </div>
       </li>
-
+      
     <% else %>
       <li class="nav-item">
         <a class="nav-link" href="#">Sign In</a>
@@ -26,5 +26,6 @@
         <a class="nav-link" href="#">Create An Account</a>
       </li>
     <% end %>
+    <li class="nav-item"><%= @count %></li>
   </div>
 </nav>

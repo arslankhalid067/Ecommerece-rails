@@ -3,8 +3,8 @@
 <h2>Your Cart</h2>
 <ul>
 <% @cart.line_items.each do |item| %>
-<li><%= item.product.name %></li>
+<li><%= item.quantity %>&times;<%= item.product.name %><b class="ml-5"><%= number_to_currency(item.total_price) %></b></li>
 <% end %>
+<p><b>Total Price:</b><%= @cart.total_price %></p>
 </ul>
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<%= button_to 'Empty Cart', @cart, method: :delete, data:{confirm: "Are You Sure?"} %>
