@@ -10,7 +10,6 @@
     <b>Category:</b>
     <ul>
     <% @product.categories.each do |category| %>
-    <li><%= category.name %></li>
+    
     <%end%>
     </ul>
-    <%= link_to 'Delete product', product_path(@product), method: :delete %>

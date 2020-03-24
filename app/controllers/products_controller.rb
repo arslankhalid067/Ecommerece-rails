@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, except: %i[show index]
+  before_action :admin?, except: %i[show index]
   def index
     @products = Product.all
   end
@@ -43,6 +45,12 @@ class ProductsController < ApplicationController
   end
 
   protected
+
+  def admin?
+    unless current_user.admin
+      redirect_to products_path, notice: 'Sorry You are not authorized to perform this action.'
+    end
+  end
 
   def product_params
     params.require(:product).permit(:name, :description, :image, :price)

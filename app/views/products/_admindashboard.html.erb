@@ -1,0 +1,35 @@
+<h1 class="jumbotron">Welcome To Dashboard</h1>
+<h1>Products</h1>
+<a class="btn btn-info" href="<%= new_product_path %>">Add Product</a>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <% @products.each do |product| %>
+  <tbody>
+    <tr>
+      <th scope="row"><%= product.id %></th>
+      <td><%= product.name %></td>
+      <td><%= product.description %></td>
+      <td><%= product.price %></td>
+      <td>
+      <%= link_to product_path(product) do %>
+        <i class="fa fa-eye text-secondary" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to edit_product_path(product) do %>
+        <i class="fa fa-pencil-square-o text-info" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to product_path(product), method: :delete, data: {confirm: "Are You sure?"}  do %>
+        <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+      <% end %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
