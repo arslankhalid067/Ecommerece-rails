@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   before_action :admin?, except: %i[show index]
   def index
     @products = Product.all
+    @orders = Order.all
   end
 
   def new
@@ -48,7 +49,8 @@ class ProductsController < ApplicationController
 
   def admin?
     unless current_user.admin
-      redirect_to products_path, notice: 'Sorry You are not authorized to perform this action.'
+      redirect_to products_path,
+                  notice: 'Sorry You are not authorized to perform this action.'
     end
   end
 

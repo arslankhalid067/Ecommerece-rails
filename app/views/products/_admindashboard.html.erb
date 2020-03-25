@@ -1,4 +1,4 @@
-<h1 class="jumbotron">Welcome To Dashboard</h1>
+<div class="jumbotron"><h3>Total Money Earned: <%= total_earning(@orders) %>$</h3></div>
 <h1>Products</h1>
 <a class="btn btn-info" href="<%= new_product_path %>">Add Product</a>
 <table class="table table-striped">
@@ -28,6 +28,33 @@
       <%= link_to product_path(product), method: :delete, data: {confirm: "Are You sure?"}  do %>
         <i class="fa fa-trash text-danger" aria-hidden="true"></i>
       <% end %>
+      </td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Customer Email</th>
+      <th scope="col">Cart # of Customer</th>
+      <th scope="col">Total Amount</th>
+    </tr>
+  </thead>
+
+  <h1>Orders</h1>
+  <% @orders.each do |order| %>
+  <tbody>
+    <tr>
+      <th scope="row"><%= order.id %></th>
+      <td><%= order.user.email %></td>
+      <td><%= order.cart_id %></td>
+      <td><%= order.amount %>$</td>
+      <td>
+      
       </td>
     </tr>
   </tbody>

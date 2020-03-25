@@ -13,7 +13,11 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
-    @cart = current_user.cart
+    @cart = if current_user
+              current_user.cart
+            else
+              Cart.find(session[:cart_id])
+            end
   end
 
   # GET /carts/new

@@ -4,6 +4,11 @@
 .button_to {
   display: inline;
 }
+.button_to input[value="CheckOut"] {
+  width: 100%;
+  background-color: #d39e00;
+  color: white;
+}
 .cart-icon {
   font-size: 23px;
 }

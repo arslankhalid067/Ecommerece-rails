@@ -1,7 +1,7 @@
 <% if current_user && current_user.admin %>
-    <%= render 'admindashboard' %>
-    <% else %>
-        <%= render 'showproducts' %>
+  <%= render 'admindashboard' %>
+<% else %>
+  <%= render 'showproducts' %>
 <% end %>
 
 

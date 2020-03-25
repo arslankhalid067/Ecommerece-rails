@@ -7,11 +7,14 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mr-4">
     
-    <%  if user_signed_in? %>
-     <%= link_to current_user.cart, class: "d-inline" do%>
+    <% if current_user && !current_user.admin %>
+      <%= link_to current_user.cart, class: "d-inline" do%>
         <span class="badge badge-secondary"><%= display_cart_items_count %></span>
         <i class="fa fa-shopping-cart text-dark mr-3 mt-2 cart-icon" aria-hidden="true"></i>
       <% end  %>
+    <% end %>
+    <%  if user_signed_in?  %>
+     
     <li class="nav-item dropdown">
        
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -26,12 +29,17 @@
       
     
     <% else %>
-   
+    
+     <%= link_to cart_path(@cart), class: "d-inline" do%>
+        <span class="badge badge-secondary"><%= display_cart_items_count %></span>
+        <i class="fa fa-shopping-cart text-dark mr-3 mt-2 cart-icon" aria-hidden="true"></i>
+      <% end  %>
+
       <li class="nav-item">
-        <a class="nav-link" href="#">Sign In</a>
+        <a class="nav-link" href="<%= new_user_session_path %>">Sign In</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Create An Account</a>
+        <a class="nav-link" href="<%= new_user_registration_path %>">Create An Account</a>
       </li>
     <% end %>
   </div>
