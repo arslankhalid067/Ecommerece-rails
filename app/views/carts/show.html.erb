@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+<% @products.each do |product| %>
+  <p>
+    <%= product.product.name %> x <span><b><%= product.quantity %></b></span> <span class="ml-3"><b>Price:<%= product.product.price*product.quantity %></b></span>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', carts_path %>
