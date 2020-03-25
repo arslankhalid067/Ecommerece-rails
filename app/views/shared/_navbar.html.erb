@@ -9,11 +9,11 @@
     
     <%  if user_signed_in? %>
      <%= link_to current_user.cart, class: "d-inline" do%>
-        <span class="badge badge-secondary"><%= current_user.cart.line_items.count %></span>
+        
         <i class="fa fa-shopping-cart text-dark mr-3 mt-2 cart-icon" aria-hidden="true"></i>
       <% end  %>
     <li class="nav-item dropdown">
-       
+       <span class="badge badge-secondary"><%= current_user.cart.line_items.count %></span>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= current_user.email %>
         </a>

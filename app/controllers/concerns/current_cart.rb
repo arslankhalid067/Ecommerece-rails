@@ -13,7 +13,11 @@ module CurrentCart
     # end
     if current_user
       @cart = Cart.find_by(user_id: current_user.id)
-      @cart ||= Cart.create(user_id: current_user.id)
+      if @cart.nil?
+        find_cart
+        @cart.user_id = current_user.id
+        @cart.save
+      end
       session[:cart_id] = @cart.id
     else
       set_guest_cart
@@ -28,6 +32,12 @@ module CurrentCart
     #   @cart.create
     # end
     # session[:cart_id] = @cart.id
+  end
+
+  def find_cart
+    @cart = Cart.find(session[:cart_id])
+  rescue ActiveRecord::RecordNotFound
+    @cart = Cart.new
   end
 
   def set_guest_cart
