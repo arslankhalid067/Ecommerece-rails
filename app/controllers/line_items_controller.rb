@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class LineItemsController < ApplicationController
-  include CurrentCart
   before_action :set_line_item, only: %i[show edit update destroy]
-  before_action :set_cart, only: [:create]
 
   # GET /line_items
   # GET /line_items.json

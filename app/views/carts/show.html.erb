@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
-<% @products.each do |product| %>
+<% @cart.line_items.each do |product| %>
   <p>
     <%= product.product.name %> x <span><b><%= product.quantity %></b></span> <span class="ml-3"><b>Price:<%= product.product.price*product.quantity %></b></span>
   </p>
 <% end %>
+  <p><b>Total Price: </b><%= number_to_currency(@cart.total_price) %></p>
+
+  <%= button_to 'CheckOut', checkout_create_path,method: :post, params: {cart_id: @cart.id},remote: true %>
 
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>
