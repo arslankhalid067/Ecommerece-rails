@@ -1,0 +1,10 @@
+<%= form_with model: @order do |form| %>
+  <p>
+    <b><%= form.label :status %></b>
+    <%= form.text_field :status %>
+  </p>
+  <p>
+    <%= form.submit "Update Status", class: "btn btn-info" %>
+  </p>
+
+<% end %>

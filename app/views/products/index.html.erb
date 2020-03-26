@@ -1,7 +1,16 @@
+<% unless current_user && current_user.admin %>
+<div class="jumbotron">
+  <h1 class="m-3">Welcome To Devshop</h1>
+  <p class="ml-3 lead">A Place where you can Buy every kind of Laptop</p>
+</div>
+<% end %>
+<%= render "shared/alerts" %>
+<div class="container">
 <% if current_user && current_user.admin %>
   <%= render 'admindashboard' %>
 <% else %>
   <%= render 'showproducts' %>
 <% end %>
+</div>
 
 

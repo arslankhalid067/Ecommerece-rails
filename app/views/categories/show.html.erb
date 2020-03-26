@@ -1,0 +1,9 @@
+<div class="container">
+<% if current_user && current_user.admin %>
+  <%= render 'products/admindashboard' %>
+<% else %>
+  <%= render 'products/showproducts' %>
+<% end %>
+</div>
+
+

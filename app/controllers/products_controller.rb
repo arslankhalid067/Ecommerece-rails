@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
+  before_action :get_categories
   before_action :authenticate_user!, except: %i[show index]
   before_action :admin?, except: %i[show index]
   def index
@@ -15,6 +16,8 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user = current_user
+    @categories = Category.where(id: params[:product][:categories])
+    @product.categories = @categories
     if @product.save
       redirect_to products_path
     else
@@ -55,6 +58,10 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :image, :price)
+    params.require(:product).permit(:name, :description, :image, :price, :categories)
+  end
+
+  def get_categories
+    @categories = Category.all
   end
 end

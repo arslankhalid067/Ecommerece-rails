@@ -1,15 +1,18 @@
+<% if @category %>
+  <h1><%= @category.name %></h1>
+<% end %>
 <% if @products.any? %>
   <div class="row">
     <% @products.each do |product| %>
     <div class="col-md-4">
-      <div class="card">
+      <div class="card mb-4 mt-3">
          <% if product.image.attached? %>
             <img src="<%= url_for(product.image) %>" alt="product_img" height="270px">
          <% end %>
         <div class="card-body">  
             <h2><%= product.name %></h2>
             <p><%= product.description %></p>
-            <p><b>Price:</b><%= product.price %></p>
+            <p><b>Price:<%= number_to_currency(product.price) %></b></p>
             <hr>
         </div>
         <div class="card-footer">

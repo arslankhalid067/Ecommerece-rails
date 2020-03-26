@@ -1,16 +1,28 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">DEVSHOP</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="<%= root_path %>">DEVSHOP</a>
+  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  
+  
+    <ul class="navbar-nav mr-auto">
+  <li class="nav-item"><a href="<%= root_path %>" class="nav-link">Home</a></li>
+      <% @categories.each do |cat| %>
+        <li class="nav-item">
+          <a href="<%= category_path(cat) %>" class="nav-link"><%= cat.name %></a>
+        </li>
+      <% end %>
+    </ul>  
+  
     <ul class="navbar-nav ml-auto mr-4">
     
     <% if current_user && !current_user.admin %>
       <%= link_to current_user.cart, class: "d-inline" do%>
         <span class="badge badge-secondary"><%= display_cart_items_count %></span>
-        <i class="fa fa-shopping-cart text-dark mr-3 mt-2 cart-icon" aria-hidden="true"></i>
+        <i class="fa fa-shopping-cart text-light mr-3 mt-2 cart-icon" aria-hidden="true"></i>
       <% end  %>
     <% end %>
     <%  if user_signed_in?  %>
@@ -32,7 +44,7 @@
     
      <%= link_to cart_path(@cart), class: "d-inline" do%>
         <span class="badge badge-secondary"><%= display_cart_items_count %></span>
-        <i class="fa fa-shopping-cart text-dark mr-3 mt-2 cart-icon" aria-hidden="true"></i>
+        <i class="fa fa-shopping-cart text-light   mr-3 mt-2 cart-icon" aria-hidden="true"></i>
       <% end  %>
 
       <li class="nav-item">
@@ -44,3 +56,6 @@
     <% end %>
   </div>
 </nav>
+
+
+ 

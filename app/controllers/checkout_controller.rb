@@ -2,7 +2,7 @@
 
 class CheckoutController < ApplicationController
   def create
-    @cart = Cart.find_by(session[:id])
+    @cart = Cart.find(params[:cart_id])
     if @cart.nil?
       respond_to root_path
       return
@@ -11,7 +11,7 @@ class CheckoutController < ApplicationController
       payment_method_types: ['card'],
       line_items: [{
         name: 'name',
-        description: @cart.line_items.count,
+        description: 'Devshop Checkout',
         amount: @cart.total_price_in_cents,
         currency: 'usd',
         quantity: 1

@@ -11,5 +11,8 @@
 User.create(email: 'admin@devshop.com', password: '123456', password_confirmation: '123456', admin: true)
 User.create(email: 'arslan@devshop.com', password: '123456', password_confirmation: '123456')
 
-Product.create(name: 'Product 1', description: 'Description of Product 1', price: 1500, user_id: 1)
-Product.create(name: 'Product 2', description: 'Description of Product 2', price: 1500, user_id: 1)
+Category.create(name: 'Dell')
+Category.create(name: 'HP')
+Category.create(name: 'Lenovo')
+Category.create(name: 'Gaming')
+Category.create(name: 'Budget')
