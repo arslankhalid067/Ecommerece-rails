@@ -9,7 +9,9 @@
 <% if current_user && current_user.admin %>
   <%= render 'admindashboard' %>
 <% else %>
+<div id="pro">
   <%= render 'showproducts' %>
+  </div>
 <% end %>
 </div>
 
