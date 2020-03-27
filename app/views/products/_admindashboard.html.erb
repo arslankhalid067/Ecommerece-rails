@@ -2,75 +2,16 @@
 <div class="jumbotron"><h3>Total Money Earned: <%= total_earning(@orders) %>$</h3></div>
 <h1>Products</h1>
 <a class="btn btn-info" href="<%= new_product_path %>">Add Product</a>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Title</th>
-      <th scope="col">Description</th>
-      <th scope="col">Price</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <% @products.each do |product| %>
-  <tbody>
-    <tr>
-      <th scope="row"><%= product.id %></th>
-      <td><%= product.name %></td>
-      <td><%= product.description %></td>
-      <td><%= product.price %></td>
-      <td>
-      <%= link_to product_path(product) do %>
-        <i class="fa fa-eye text-secondary" aria-hidden="true"></i>
-      <% end %>
-      <%= link_to edit_product_path(product) do %>
-        <i class="fa fa-pencil-square-o text-info" aria-hidden="true"></i>
-      <% end %>
-      <%= link_to product_path(product), method: :delete, data: {confirm: "Are You sure?"}  do %>
-        <i class="fa fa-trash text-danger" aria-hidden="true"></i>
-      <% end %>
-      </td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
+
+  <%= render 'shared/products' %>
+
+<h1>Categories</h1>
+<a class="btn btn-info" href="<%= new_category_path %>">Add Category</a>
+
+  <%= render 'shared/categories' %>
 
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Customer Email</th>
-      <th scope="col">Cart # of Customer</th>
-      <th scope="col">Total Amount</th>
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
+<h1>Orders</h1>
+  <%= render 'shared/orders' %>
 
-  <h1>Orders</h1>
-  <% @orders.each do |order| %>
-  <tbody>
-    <tr>
-      <th scope="row"><%= order.id %></th>
-      <td><%= order.user.email %></td>
-      <td><%= order.cart_id %></td>
-      <td><%= order.amount %>$</td>
-      <td><%= order.status %></td>
-      <td>
-        <%= link_to order_path(order), method: :delete, data: {confirm: "Are You sure?"}  do %>
-          <i class="fa fa-trash text-danger" aria-hidden="true"></i>
-        <% end %>
-        <%= link_to edit_order_path(order) do %>
-          <i class="fa fa-pencil-square-o text-info" aria-hidden="true"></i>
-        <% end %>
-        
-
-      </td>
-      <td>
-      
-      </td>
-    </tr>
-  </tbody>
-  <% end %>
-</table>
 

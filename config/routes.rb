@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'admin/products', to: 'admins#products', as: 'admin_products'
+  get 'admin/categories', to: 'admins#categories', as: 'admin_categories'
+  get 'admin/orders', to: 'admins#orders', as: 'admin_orders'
   resources :orders
 
   scope '/checkout' do

@@ -26,16 +26,32 @@ module ApplicationHelper
   def total_earning(orders)
     sum = 0
     orders.each do |order|
-      sum += order.amount if order.status = 'Approved'
+      sum += order.amount if order.status
     end
     sum
   end
 
-  def determine_value(status)
-    if status == 'Pending'
+  def get_status(status)
+    if status
       'Approved'
     else
       'Pending'
+    end
+  end
+
+  def get_other_status_value(status)
+    if status
+      0
+    else
+      1
+    end
+  end
+
+  def get_other_status_text(status)
+    if status
+      'Pending'
+    else
+      'Approved'
     end
   end
 end

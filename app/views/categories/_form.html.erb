@@ -1,0 +1,23 @@
+<%= form_with model: @category, local: true do |form| %>
+ <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@category.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <p class="form-group">
+    <%= form.label :name %><br>
+    <%= form.text_field :name, class: "form-control" %>
+  </p>
+    <p>
+    <%= form.submit  class: "btn btn-info btn-lg" %>
+  </p>
+
+<% end %>

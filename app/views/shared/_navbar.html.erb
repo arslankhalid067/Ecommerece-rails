@@ -18,7 +18,19 @@
     </ul>  
   
     <ul class="navbar-nav ml-auto mr-4">
+    <% if current_user && current_user.admin %>
+
+        <li class="nav-item">
+          <a href="<%= admin_products_path %>" class="nav-link">Products</a>
+        </li>
+        <li class="nav-item">
+          <a href="<%= admin_categories_path %>" class="nav-link">Categories</a>
+        </li>
+        <li class="nav-item">
+          <a href="<%= admin_orders_path %>" class="nav-link">Orders</a>
+        </li>
     
+    <% end %>
     <% if current_user && !current_user.admin %>
       <%= link_to current_user.cart, class: "d-inline" do%>
         <span class="badge badge-secondary"><%= display_cart_items_count %></span>
@@ -26,7 +38,7 @@
       <% end  %>
     <% end %>
     <%  if user_signed_in?  %>
-     
+
     <li class="nav-item dropdown">
        
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

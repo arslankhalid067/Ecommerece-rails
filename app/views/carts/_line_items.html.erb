@@ -1,0 +1,53 @@
+<% if @cart.line_items.any? %>
+<% @cart.line_items.each do |product| %>
+<div class="row mb-3">
+  <div class="col-md-3">
+  <% if product.product.image.attached? %>
+    <img src="<%= url_for(product.product.image) %>" alt="" width="100%">
+  <% end %>
+  </div>
+  <div class="col-md-4 mt-4">
+    <h3><%= product.product.name %></h3>
+  </div>
+  <div class="col-md-4 mt-4">
+    <h3>x <%= product.quantity %>  = <%= product.quantity*product.product.price %> </h3>
+  </div>
+  <div class="col-md-1">
+  <%= link_to line_item_path(product),method: :delete, data: {confirm: "Are You sure?"} do %>
+   <h3> <i class="fa fa-trash text-danger mt-4" aria-hidden="true"></i></h3>
+  </div> 
+</div>
+  <% end %>
+<% end %>
+<div class="row mb-3">
+<div class="col-md-12">
+<div class="card">
+  <p class="text-center"><b>Total Price: </b><%= number_to_currency(@cart.total_price) %></p>
+  <% if current_user %>
+    <%= button_to 'CheckOut', checkout_create_path,method: :post, params: {cart_id: @cart.id},remote: true %>
+  <% else %>
+    <%= link_to 'Register To CheckOut', new_user_registration_path, class: "btn btn-warning" %>
+  <% end %>
+</div>
+
+</div>
+</div>
+  
+<div class="row ">
+  <div class="col-md-12">
+    <a href="<%= products_path %>" class="btn btn-info w-100">Keep Shopping</a>
+  </div>
+</div>
+<% else %>
+
+  <div>
+    <h3>You did not add anything to cart</h3>
+<div class="row ">
+  <div class="col-md-12">
+    <a href="<%= products_path %>" class="btn btn-info w-100">Go to Products Page</a>
+  </div>
+</div>
+
+  </div>
+  
+<% end %>

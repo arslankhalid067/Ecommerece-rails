@@ -5,8 +5,9 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: %i[show index]
   before_action :admin?, except: %i[show index]
   def index
-    @products = Product.all
-    @orders = Order.all
+    @products = Product.all.order(:id)
+    @orders = Order.all.order(:id)
+    @categories = Category.all.order(:id)
   end
 
   def new

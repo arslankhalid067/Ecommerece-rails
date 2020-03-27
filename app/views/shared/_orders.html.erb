@@ -1,0 +1,33 @@
+<table class="table table-striped">
+  <thead class="bg-dark text-white">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Customer Email</th>
+      <th scope="col">Cart # of Customer</th>
+      <th scope="col">Total Amount</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  
+  <% @orders.each do |order| %>
+  <tbody>
+    <tr>
+      <th scope="row"><%= order.id %></th>
+      <td><%= order.user.email %></td>
+      <td><%= order.cart_id %></td>
+      <td><%= order.amount %></td>
+      <td><%= get_status(order.status) %></td>
+      <td>
+        <%= link_to order_path(order), method: :delete, data: {confirm: "Are You sure?"}  do %>
+          <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to edit_order_path(order) do %>
+        <i class="fa fa-pencil-square-o text-info" aria-hidden="true"></i>
+        <% end %>    
+      </td>
+     
+    </tr>
+  </tbody>
+  <% end %>
+</table>

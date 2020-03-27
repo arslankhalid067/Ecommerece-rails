@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.status = params['order']['status']
+    @order.status = params['status']
     @order.save
     redirect_to root_path
   end

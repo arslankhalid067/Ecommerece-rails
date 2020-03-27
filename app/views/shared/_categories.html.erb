@@ -1,0 +1,21 @@
+<table class="table table-striped">
+  <thead class="text-white bg-dark">
+    <th>#</th>
+    <th>Category Name</th>
+    <th>Actions</th>
+  </thead>
+  <% @categories.each do |category| %>
+  <tbody>
+    <td><%= category.id %></td>
+    <td><%= category.name %></td>
+    <td>
+      <%= link_to edit_category_path(category) do %>
+        <i class="fa fa-pencil-square-o text-info" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to category_path(category),method: :delete , data: {confirm: "Are you Sure?"} do %>
+        <i class="fa fa-trash text-danger" aria-hidden="true"></i>
+      <% end %>
+    </td>
+  </tbody>
+  <% end %>
+</table>

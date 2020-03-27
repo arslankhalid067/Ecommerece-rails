@@ -1,7 +1,10 @@
 <%= form_with model: @order do |form| %>
   <p>
     <b><%= form.label :status %></b>
-    <%= form.text_field :status %>
+    <select name="status" id="status">
+      <option value="<%= @order.status %>"><%= get_status(@order.status)%></option>
+      <option value="<%= get_other_status_value(@order.status) %>"><%= get_other_status_text(@order.status)%></option>
+    </select>
   </p>
   <p>
     <%= form.submit "Update Status", class: "btn btn-info" %>
