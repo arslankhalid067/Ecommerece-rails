@@ -36,6 +36,8 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+    @categories = Category.where(id: params[:product][:categories])
+    @product.categories = @categories
     if @product.update(product_params)
       redirect_to product_path
     else

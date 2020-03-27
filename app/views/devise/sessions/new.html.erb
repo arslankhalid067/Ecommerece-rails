@@ -1,9 +1,11 @@
+
 <div class="d-flex justify-content-center align-item-center login-form">
 <div class="card">
   <div class="card-header text-center text-white bg-dark form-card">
     <h2>Log in</h2>
   </div>
   <div class="card-body">
+  <%= render 'shared/alerts' %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field form-group">
     <%= f.label :email %><br />

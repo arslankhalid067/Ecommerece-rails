@@ -12,12 +12,10 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>
+    
    
     <%= render 'shared/navbar' %>
-   
+    <%# <%= render 'shared/alerts' %> 
 
     <div class="container-fluid p-0"> 
       <%= yield %>
