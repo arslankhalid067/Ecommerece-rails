@@ -16,3 +16,24 @@ Category.create(name: 'HP')
 Category.create(name: 'Lenovo')
 Category.create(name: 'Gaming')
 Category.create(name: 'Budget')
+
+product = Product.new(name: 'Dell Laptop', description: 'Dell Laptop description', price: 450)
+categories = Category.find_by_id(1)
+product.categories = product.categories << categories
+product.user_id = 1
+product.save
+product.image.attach(io: File.open('app/assets/images/dell.jpg'), filename: 'dell.jpg', content_type: 'image/jpg')
+
+product = Product.new(name: 'Lenovo Gaming Laptop', description: 'Lenovo Gaming Laptop Description', price: 890)
+categories = Category.where(id: [3, 4])
+product.categories = product.categories << categories
+product.user_id = 1
+product.save
+product.image.attach(io: File.open('app/assets/images/lenovo.jpeg'), filename: 'lenovo.jpeg', content_type: 'image/jpg')
+
+product = Product.new(name: 'HP Budget Laptop', description: 'Hp Budget Laptop', price: 290)
+categories = Category.where(id: [2, 5])
+product.categories = product.categories << categories
+product.user_id = 1
+product.save
+product.image.attach(io: File.open('app/assets/images/hp.jpg'), filename: 'hp.jpg', content_type: 'image/jpg')

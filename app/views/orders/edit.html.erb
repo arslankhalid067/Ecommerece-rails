@@ -1,7 +1,13 @@
-<%= form_with model: @order do |form| %>
+<div class="container">
+<div class="card mt-5">
+  <div class="card-header text-center text-white bg-dark">
+    <h2>Edit Status Of Order</h2>
+  </div>
+  <div class="card-body">
+    <%= form_with model: @order do |form| %>
   <p>
     <b><%= form.label :status %></b>
-    <select name="status" id="status">
+    <select name="status" id="status" class="form-control">
       <option value="<%= @order.status %>"><%= get_status(@order.status)%></option>
       <option value="<%= get_other_status_value(@order.status) %>"><%= get_other_status_text(@order.status)%></option>
     </select>
@@ -11,3 +17,7 @@
   </p>
 
 <% end %>
+  </div>
+</div>
+
+</div>

@@ -4,8 +4,8 @@
 <% if @products.any? %>
   <div class="row">
     <% @products.each do |product| %>
-    <div class="col-md-4">
-      <div class="card mb-4 mt-3">
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card mb-4 mt-3 w-100 h-100">
          <% if product.image.attached? %>
             <img src="<%= url_for(product.image) %>" alt="product_img" height="270px">
          <% end %>

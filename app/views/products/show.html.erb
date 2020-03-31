@@ -11,7 +11,9 @@
       <p><%= @product.description %></p>
       <p><b>Price:</b><%= @product.price %></p>
       <b>Category:</b><% @product.categories.each do |cat|%> <ul> <li> <%= cat.name %></li></ul>   <% end %>
-      <%= button_to 'Add To Cart', line_items_path(product_id: @product), class: "mr-2 btn btn-secondary" %>
+      <% if !current_user || (current_user && !current_user.admin)  %>
+        <%= button_to 'Add To Cart', line_items_path(product_id: @product), class: "mr-2 btn btn-secondary" %>
+      <% end %>
     </div>
 </div>
     

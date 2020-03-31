@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_124816) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "amount"
-    t.string "status", default: "Pending"
+    t.boolean "status", default: false
     t.index ["cart_id"], name: "index_orders_on_cart_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
